@@ -203,9 +203,10 @@ foreach ($megaMenuArray as $i => &$item)
 
 		echo '<li' . $class . '>';
 	    $item->anchor_css = 'nav-link';
-		//if($item->level > 1) {
-		//	$item->anchor_css = 'dropdown-item';
-		//}
+		
+		if($item->level > 1) {
+			$item->anchor_css = 'dropdown-item';
+		}
 
 		// The next item is deeper.
 		if ($item->deeper)
