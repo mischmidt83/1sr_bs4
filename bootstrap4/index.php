@@ -38,9 +38,28 @@ $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/popper.m
 $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/bootstrap.min.js');
 
 // Add Stylesheets
+
+// require "scssphp-0.0.12/scss.inc.php";
+//
+// $scssDir = 'templates/' . $this->template . '/scss';
+// // scss_server::serveFrom($scssDir);
+//
+// $scss = new scssc();
+// $scss->setImportPaths($scssDir);
+// $scss->setFormatter("scss_formatter_compressed");
+//
+// $scss->setVariables(array(
+// 	'color' => '#ff0',
+// ));
+//
+// // add inline styles
+// $doc->addStyleDeclaration($scss->compile('@import "1sr_bs4";'));
+
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/template.css');
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/bootstrap.min.css');
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/font-awesome.min.css');
+
+$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/scss/s.php/1sr_bs4.scss');
 
 // Adjusting content width
 if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right')) {
@@ -66,6 +85,7 @@ if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right'))
         <![endif]-->
     </head>
     <body>
+      <header class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark yamm">
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
