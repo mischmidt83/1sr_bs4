@@ -1,7 +1,22 @@
+/**
+ * overrides
+ *
+ * have to be defined be the imports
+ */
 
-@import 'yamm3';
+// font-awesome
+$fa-font-path:        "../font-awesome-4.7.0/fonts";
 
-//$color: #abc !default;
+/**
+ * import 3rd party styles
+ */
+@import 'bootstrap-4.0.0-beta/scss/bootstrap.scss';
+@import 'font-awesome-4.7.0/scss/font-awesome.scss';
+@import 'yamm3/yamm3.scss';
+
+/**
+ * import template style
+ */
 
 .bg-dark {
   background-color: $navBG!important;

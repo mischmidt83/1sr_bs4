@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="3.1" type="template" client="site" method="upgrade">
-    <name>bootstrap4</name>
+    <!--name>bootstrap4</name>
     <version>1.5</version>
     <creationDate>17/09/2016</creationDate>
     <author>Jochen Wiesel</author>
     <authorEmail>jochen@sniggle.me</authorEmail>
-    <copyright>Copyright (C) 2017 sniggle.me. All rights reserved.</copyright>
+    <copyright>Copyright (C) 2017 sniggle.me. All rights reserved.</copyright-->
+    <name>1sr_bs4</name>
+  	<creationDate>2017-10-04</creationDate>
+  	<author>1sr.de</author>
+  	<copyright>Copyright © 2017 1sr.de, Inc. All rights reserved.</copyright>
+  	<authorEmail>info@1sr.de</authorEmail>
+  	<authorUrl>http://www.1sr.de</authorUrl>
+  	<version>1.52</version>
     <description>TPL_BOOTSTRAP4_XML_DESCRIPTION</description>
     <files>
         <filename>component.php</filename>
@@ -22,6 +29,8 @@
         <folder>images</folder>
         <folder>js</folder>
         <folder>language</folder>
+        <folder>scss</folder>
+        <folder>scssphp-0.0.12</folder>
     </files>
     <positions>
         <position>banner</position>
@@ -44,21 +53,40 @@
         <position>footer</position>
     </positions>
     <languages folder="language">
-        <language tag="en-GB">en-GB/en-GB.tpl_bootstrap4.ini</language>
-        <language tag="en-GB">en-GB/en-GB.tpl_bootstrap4.sys.ini</language>
-        <language tag="de-DE">de-DE/de-DE.tpl_bootstrap4.ini</language>
-        <language tag="de-DE">de-DE/de-DE.tpl_bootstrap4.sys.ini</language>
+        <language tag="en-GB">en-GB/en-GB.tpl_1sr_bs4.ini</language>
+        <language tag="en-GB">en-GB/en-GB.tpl_1sr_bs4.sys.ini</language>
+        <language tag="de-DE">de-DE/de-DE.tpl_1sr_bs4.ini</language>
+        <language tag="de-DE">de-DE/de-DE.tpl_1sr_bs4.sys.ini</language>
     </languages>
     <config>
         <fields name="params">
             <fieldset name="advanced">
-                <field name="sitedescription"  type="text" default=""
-					label="JGLOBAL_DESCRIPTION"
-					description="JGLOBAL_SUBHEADING_DESC"
-					filter="string" />
-                <field name="favicon" class="" type="text" default="/templates/bootstrap4/favicon.ico"
-					label="TPL_BOOTSTRAP4_FAVICON"
-					description="TPL_BOOTSTRAP4_FAVICON_DESC" />
+                <field name="sitedescription"  type="text" default="" label="JGLOBAL_DESCRIPTION" description="JGLOBAL_SUBHEADING_DESC" filter="string" />
+                <field name="fixedWidth" type="list" default="yes" label="TPL_BOOTSTRAP4_FIXED_WITH" description="TPL_BOOTSTRAP4_FIXED_WITH_DESC">
+                    <option value="yes">TPL_BOOTSTRAP4_YES</option>
+                    <option value="no">TPL_BOOTSTRAP4_NO</option>
+                </field>
+
+                <field name="bootstrapVariables" type="textarea" default="{&quot;navbar-inverse-color&quot;:&quot;#cccccc&quot;, &quot;navbar-inverse-bg&quot;:&quot;#6ea2d5&quot;, &quot;navbar-inverse-link-color&quot;:&quot;#cccccc&quot;, &quot;navbar-inverse-toggle-border-color&quot;:&quot;#fff&quot;, &quot;navbar-inverse-toggle-hover-bg&quot;:&quot;darken(#6ea2d5, 10%)&quot;, &quot;dropdown-link-hover-color&quot;:&quot;#fff&quot;, &quot;dropdown-link-hover-bg&quot;:&quot;#6ea2d5&quot;, &quot;grid-columns&quot;:&quot;36&quot;, &quot;breadcrumb-color&quot;:&quot;#fff&quot;, &quot;breadcrumb-active-color&quot;: &quot;#fff&quot;, &quot;breadcrumb-bg&quot;:&quot;#6ea2d5&quot;,&quot;breadcrumb-separator&quot;:&quot;&quot;} " label="TPL_BOOTSTRAP4_BOOTSTRAP_VARIABLES" description="TPL_BOOTSTRAP4_BOOTSTRAP_VARIABLES_DESC" rows="10" cols="5" filter="raw"/>
+                <field name="1srVariables" type="textarea" default="{&quot;1sr-primary&quot;:&quot;#6ea2d5&quot;, &quot;1sr-highlight&quot;:&quot;#ff9900&quot;}" label="TPL_BOOTSTRAP4_TEMPLATE_VARIABLES" description="TPL_BOOTSTRAP4_TEMPLATE_VARIABLES_DESC" rows="10" cols="5" filter="raw"/>
+
+                <field name="customLogo" type="media" directory="stories" label="TPL_BOOTSTRAP4_CUSTOM_LOGO" description="TPL_BOOTSTRAP4_CUSTOM_LOGO_DESC" />
+
+                <field name="favicon" class="" type="text" default="/templates/1sr_bs4/favicon.ico" label="TPL_BOOTSTRAP4_FAVICON" description="TPL_BOOTSTRAP4_FAVICON_DESC" />
+
+                <field name="showSiteName" type="list" default="yes" label="TPL_BOOTSTRAP4_SHOW_SITE_NAME" description="TPL_BOOTSTRAP4_SHOW_SITE_NAME_DESC">
+                    <option value="yes">TPL_BOOTSTRAP4_YES</option>
+                    <option value="no">TPL_BOOTSTRAP4_NO</option>
+                </field>
+
+                <field name="analyticsAccount" type="text" default="" label="TPL_BOOTSTRAP4_ANALYTICS_ACCOUNT" description="TPL_BOOTSTRAP4_ANALYTICS_ACCOUNT_DESC" filter="string" />
+
+                <field name="mapsApiKey" type="text" default="" label="TPL_BOOTSTRAP4_MAPS_API_KEY" description="TPL_BOOTSTRAP4_MAPS_API_KEY_DESC" filter="string" />
+
+                <field name="showCookieDeclineButton" type="list" default="no" label="TPL_BOOTSTRAP4_SHOW_TPL_BOOTSTRAP4_COOKIE_DECLINE_BUTTON" description="TPL_BOOTSTRAP4_SHOW_TPL_BOOTSTRAP4_COOKIE_DECLINE_BUTTON_DESC">
+                    <option value="yes">TPL_BOOTSTRAP4_YES</option>
+                    <option value="no">TPL_BOOTSTRAP4_NO</option>
+                </field>
             </fieldset>
         </fields>
     </config>

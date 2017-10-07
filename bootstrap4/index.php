@@ -39,25 +39,25 @@ $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/bootstra
 
 // Add Stylesheets
 
-// require "scssphp-0.0.12/scss.inc.php";
+// require_once "scssphp-0.6.7/scss.inc.php";
+//
+// use Leafo\ScssPhp\Compiler;
 //
 // $scssDir = 'templates/' . $this->template . '/scss';
 // // scss_server::serveFrom($scssDir);
 //
-// $scss = new scssc();
+// $scss = new Compiler();
 // $scss->setImportPaths($scssDir);
-// $scss->setFormatter("scss_formatter_compressed");
+// $scss->setFormatter('Leafo\ScssPhp\Formatter\Compressed');
 //
 // $scss->setVariables(array(
-// 	'color' => '#ff0',
+// 	'navBG' => '#f00',
 // ));
 //
 // // add inline styles
 // $doc->addStyleDeclaration($scss->compile('@import "1sr_bs4";'));
 
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/template.css');
-$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/bootstrap.min.css');
-$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/font-awesome.min.css');
 
 $doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/scss/s.php/1sr_bs4.scss');
 
@@ -85,7 +85,7 @@ if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right'))
         <![endif]-->
     </head>
     <body>
-      <header class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark yamm">
+      <header class="navbar navbar-expand-sm navbar-dark bg-dark yamm">
 			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
