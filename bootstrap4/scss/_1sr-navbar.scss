@@ -1,0 +1,36 @@
+//
+// Navbar
+// --------------------------------------------------
+
+// Generate series of `.navbar-expand-*` responsive classes for configuring
+// where your navbar collapses.
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        .yamm-content
+        > .row
+        > ul:not(:first-child) {
+          padding-top: ($grid-gutter-width / 2);
+        }
+      }
+    }
+  }
+}
+
+// flags
+
+.navbar-nav {
+  > li.dropdown {
+  	> ul.dropdown-menu {
+      .menu-flags {
+        .image-title {
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+}

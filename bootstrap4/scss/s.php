@@ -12,7 +12,7 @@ $app = JFactory::getApplication('site');
 // Getting params from template
 $params = $app->getTemplate(true)->params;
 
-// echo "/* use template variables => " . $params->get('favicon') . "*/\n\n";
+$bootstrapVarJson = $params->get('bootstrapVariables');
 
 require_once "../scssphp-0.6.7/scss.inc.php";
 
@@ -25,9 +25,7 @@ $scss = new Compiler();
 $scss->setImportPaths($scssDir);
 $scss->setFormatter('Leafo\ScssPhp\Formatter\Compressed');
 
-$scss->setVariables(array(
-	'navBG' => '#f00',
-));
+$scss->setVariables(json_decode($bootstrapVarJson, true));
 
 $server = new Server($scssDir, null, $scss);
 $server->serve();

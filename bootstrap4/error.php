@@ -34,9 +34,10 @@ JHtml::_('jquery.framework');
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title><?php echo $this->title; ?> <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
             <link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/template.css" type="text/css" />
-            <link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/bootstrap.min.css" type="text/css" />
-            <link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/font-awesome.min.css" type="text/css" />
+            <link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/scss/s.php/1sr_bs4.scss" type="text/css" />
+
             <?php if ($app->get('debug_lang', '0') == '1' || $app->get('debug', '0') == '1') : ?>
                 <link rel="stylesheet" href="<?php echo $this->baseurl; ?>/media/cms/css/debug.css" type="text/css" />
             <?php endif; ?>
@@ -55,12 +56,12 @@ JHtml::_('jquery.framework');
     . ($params->get('fluidContainer') ? ' fluid' : '');
     ?>">
 
-        <header class="navbar navbar-static-top navbar-light bg-faded" role="banner">
-            <a class="navbar-brand" href="<?php echo $this->baseurl; ?>/">Spectakel</a>
+        <header class="navbar navbar-static-top navbar-expand-sm navbar-dark bg-primary yamm" role="banner">
+            <a class="navbar-brand" href="<?php echo $this->baseurl; ?>/"><?php echo $app->get('sitename'); ?></a>
         </header>
         <div class="body">
             <div class="content">
-                <div class="jumbotron jumbotron-fluid bg-primary">
+                <div class="jumbotron jumbotron-fluid bg-primary text-white">
                     <div class="container">
                         <h1><?php echo JText::_('JERROR_LAYOUT_PAGE_NOT_FOUND'); ?></h1>
                     </div>

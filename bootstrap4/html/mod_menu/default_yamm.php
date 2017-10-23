@@ -9,6 +9,21 @@
 
 defined('_JEXEC') or die;
 
+$app = JFactory::getApplication('site');
+
+// Getting params from template
+$params = $app->getTemplate(true)->params;
+
+$bootstrapVarJson = $params->get('bootstrapVariables');
+
+$bootstrapVars = json_decode($bootstrapVarJson, true);
+
+$gridColumns = 12;
+
+if(isset($bootstrapVars["grid-columns"])) {
+  $gridColumns = $bootstrapVars["grid-columns"];
+}
+
 // Note. It is important to remove spaces between elements.
 $class = $item->anchor_css ? 'class="' . $item->anchor_css . ($item->deeper ? ' dropdown-toggle" ' : '" ') : ($item->deeper ? 'class="dropdown-toggle" ' : ''); // << changed
 $title = $item->anchor_title ? 'title="' . $item->anchor_title . '"' . ($item->deeper ? ' data-toggle="dropdown" ' : '') : ($item->deeper ? 'data-toggle="dropdown" ' : ''); // << changed
@@ -43,54 +58,54 @@ switch ($item->browserNav)
 
 $menuCols = 6;
 
-$menuColWith = 12 / $menuCols;
+$menuColWith = $gridColumns / $menuCols;
 
 
 echo '<ul class="dropdown-menu" role="menu">';
 
 	echo '<li><!-- Content container to add padding --><div class="yamm-content">';
-		
+
 		foreach ($item->subMenu as $key => $subItem) {
-		
+
 			// just top maunfacturer should be shown
 			if($subItem->params->get('menu-anchor_css') == "hidden") {
-			
+
 			}
 			else
 			{
-			
+
 				if($key % $menuCols == 0) {
 					echo '<div class="row">';
 				}
-				
+
 				echo '<ul class="col-sm-' . $menuColWith . ' list-unstyled">';
-				
+
 				echo '<li><p><strong><a class="navbar-link" href="' . $subItem->flink . '">' . $subItem->title . '</a></strong></p></li>';
-				
+
 				foreach ($subItem->subMenu as $subSubItem) {
-					
+
 					// just top devices should be shown
 					if($subSubItem->params->get('menu-anchor_css') == "hidden") {
-						
+
 					}
 					else {
 						$subSubTitle = $subSubItem->anchor_title ? 'title="' . $subSubItem->anchor_title . '"' : '';
 						echo '<li><a class="navbar-link" href="' . $subSubItem->flink . '" ' . $subSubTitle . '>' . $subSubItem->title . '</a></li>';
 					}
-					
+
 				}
-				
+
 				echo '</ul>';
-				
+
 				if(($key + 1) % $menuCols == 0) {
 					echo '</div>';
 					echo '<div class="row"><br /></div>';
 				}
-				
+
 			}
-		
-		}		
-			  
+
+		}
+
 	echo '</div></li>';
 
 echo '</ul>';

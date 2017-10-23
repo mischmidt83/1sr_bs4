@@ -1,0 +1,34 @@
+//
+// CookieCuttr
+// --------------------------------------------------
+
+.cc-cookies {
+	position:fixed;
+    width: 100%;
+	left: 0;
+    top: initial;
+	bottom: 0;
+	padding: 0.5em 5%;
+	background: #eee;
+	text-shadow: none;
+	color: #333;
+    font-size: 14px;
+    font-weight: normal;
+	z-index: 99999;
+	text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+	.cc-cookies {
+		a.cc-cookie-accept, a.cc-cookie-decline, a.cc-cookie-reset {
+			display: block;
+			margin: 1em 0;
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.cc-cookies {
+		position: fixed;
+	}
+}

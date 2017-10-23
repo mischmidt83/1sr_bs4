@@ -9,6 +9,9 @@
 //  Yamm Styles
 //-----------------------------
 
+
+$yamm-border: 0 !default;
+
 .yamm {
 
   // reset positions
@@ -33,7 +36,7 @@
 
   // Fullwidth menu
   .dropdown.yamm-fw .dropdown-menu {
-    left: 0; right: 0;
+    left: $yamm-border; right: $yamm-border;
   }
 
 }

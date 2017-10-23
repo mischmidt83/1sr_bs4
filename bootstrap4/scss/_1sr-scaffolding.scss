@@ -1,0 +1,37 @@
+//
+// Scaffolding
+// --------------------------------------------------
+
+// body {
+//   padding-top: 50px;
+// }
+
+body.iframe{
+  padding-top: 0px;
+}
+
+h1, .like-h1,
+h2, .like-h2,
+h3, .like-h3,
+h4, .like-h4 {
+  color: $1sr-primary;
+  font-weight: bold;
+}
+
+h1, .like-h1,
+h2, .like-h2 {
+  font-size: $font-size-base;
+}
+
+h3, .like-h3,
+h4, .like-h4 {
+  font-size: $font-size-base;
+}
+
+a {
+  color: $1sr-primary;
+}
+
+a:hover {
+  color: darken($1sr-highlight, 5%);
+}

@@ -107,6 +107,8 @@ foreach ($list as $i => &$item) {
 foreach ($megaMenuArray as $i => &$item)
 {
 
+	$class = '';
+
 	if($item->type == 'yamm') {
 
 		$class .= ' dropdown yamm-fw';
@@ -146,6 +148,8 @@ foreach ($megaMenuArray as $i => &$item)
 		if (!empty($class)) {
 			$class = ' class="' . trim($class) . '"';
 		}
+
+		echo "<script>console.log('" . $class . "');</script>";
 
 		echo '<li' . $class . '>';
 
@@ -203,7 +207,7 @@ foreach ($megaMenuArray as $i => &$item)
 
 		echo '<li' . $class . '>';
 	    $item->anchor_css = 'nav-link';
-		
+
 		if($item->level > 1) {
 			$item->anchor_css = 'dropdown-item';
 		}

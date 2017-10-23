@@ -1,0 +1,37 @@
+/**
+ * import common scss imports
+ */
+@import '1sr-common-imports';
+
+/**
+ * overrides
+ *
+ * have to be defined be the imports
+ */
+
+// font-awesome
+$fa-font-path:        "../font-awesome-4.7.0/fonts";
+
+// yamm
+$yamm-border: 14px;
+
+/**
+ * import 3rd party styles
+ */
+@import 'bootstrap-4.0.0-beta/scss/bootstrap';
+@import 'font-awesome-4.7.0/scss/font-awesome';
+@import 'yamm3/yamm3.scss';
+
+
+/**
+ * import template style
+ */
+@import '1sr-cookiecuttr';
+@import '1sr-local-services';
+@import '1sr-misc';
+@import '1sr-navbar';
+@import '1sr-panels';
+@import '1sr-rating';
+@import '1sr-scaffolding';
+@import '1sr-tables';
+@import "1sr-type";

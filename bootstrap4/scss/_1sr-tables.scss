@@ -1,0 +1,184 @@
+//
+// Tables
+// --------------------------------------------------
+
+@mixin generate-table-content-columns($n, $i: 0) {
+  td .table-content-#{$i} {
+    padding: 5px;
+    background-color: #fff;
+    height: (250px + ($i * 17px));
+  }
+
+  @if $i <= $n  {
+    @include generate-table-content-columns($n, ($i + 1));
+  }
+}
+
+@mixin reset-table-content-columns($n, $i: 0) {
+  td .table-content-#{$i} {
+    height: auto;
+  }
+
+  @if $i <= $n {
+    @include reset-table-content-columns($n, ($i + 1));
+  }
+}
+
+// http://elvery.net/demo/responsive-tables/
+
+.no-more-tables {
+
+  table {
+    width: 100%;
+  }
+
+  th {
+    padding: 5px 10px;
+  }
+
+  td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  th {
+    background-color: $1sr-primary;
+    color: #fff;
+  }
+
+  .centered {
+    text-align: center;
+  }
+
+  td {
+    ul {
+      padding: 0 20px;
+    }
+  }
+
+  td .table-content {
+    padding: 5px;
+    background-color: #fff;
+    height: 200px;
+  }
+
+  @include generate-table-content-columns(7);
+
+  td:first-child {
+    padding-left: 5px;
+  }
+  td:last-child {
+    padding-right: 5px;
+  }
+
+  tr:nth-child(even) {
+    background-color: $table-border-color;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #fff;
+  }
+
+  tr.gold {
+    background-color: #c90;
+  }
+
+  tr.silber {
+    background-color: #ccc;
+  }
+
+  tr.bronze {
+    background-color: #c87533;
+  }
+}
+
+@media only screen and (max-width: breakpoint-max(xs, $grid-breakpoints)) {
+
+  // override bootstrap
+  .table-bordered {
+    border: 1px solid $table-border-color;
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th,
+        > td {
+          border: none;
+        }
+      }
+    }
+    > thead > tr {
+      > th,
+      > td {
+        border-bottom-width: 2px;
+      }
+    }
+  }
+
+  .no-more-tables {
+    /* Force table to not be like tables anymore */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+       display: block;
+    }
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead {
+      tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+    }
+    tr {
+      border: 1px solid $table-border-color;
+      padding: 5px;
+    }
+    td {
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid $table-border-color;
+      position: relative;
+      padding-left: 50%;
+      white-space: normal;
+      text-align: left;
+      background-color: #fff;
+    }
+    td .table-content {
+      height: auto;
+    }
+
+    @include reset-table-content-columns(7);
+
+    td:before {
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      //top: 6px; // << changed
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      text-align: left;
+      font-weight: bold;
+    }
+    /* Label the data */
+    td:before {
+      content: attr(data-title);
+    }
+
+    td:first-child {
+      padding-left: 50%;
+    }
+    td:last-child {
+      padding-right: 0;
+    }
+
+    .centered {
+      text-align: left;
+    }
+  }
+}

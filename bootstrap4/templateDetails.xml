@@ -13,7 +13,7 @@
   	<copyright>Copyright © 2017 1sr.de, Inc. All rights reserved.</copyright>
   	<authorEmail>info@1sr.de</authorEmail>
   	<authorUrl>http://www.1sr.de</authorUrl>
-  	<version>1.52</version>
+  	<version>1.5.3</version>
     <description>TPL_BOOTSTRAP4_XML_DESCRIPTION</description>
     <files>
         <filename>component.php</filename>
@@ -30,7 +30,7 @@
         <folder>js</folder>
         <folder>language</folder>
         <folder>scss</folder>
-        <folder>scssphp-0.0.12</folder>
+        <folder>scssphp-0.6.7</folder>
     </files>
     <positions>
         <position>banner</position>
@@ -50,6 +50,7 @@
         <position>position-12</position>
         <position>position-13</position>
         <position>position-14</position>
+        <position>snippets</position>
         <position>footer</position>
     </positions>
     <languages folder="language">
@@ -67,8 +68,8 @@
                     <option value="no">TPL_BOOTSTRAP4_NO</option>
                 </field>
 
-                <field name="bootstrapVariables" type="textarea" default="{&quot;navbar-inverse-color&quot;:&quot;#cccccc&quot;, &quot;navbar-inverse-bg&quot;:&quot;#6ea2d5&quot;, &quot;navbar-inverse-link-color&quot;:&quot;#cccccc&quot;, &quot;navbar-inverse-toggle-border-color&quot;:&quot;#fff&quot;, &quot;navbar-inverse-toggle-hover-bg&quot;:&quot;darken(#6ea2d5, 10%)&quot;, &quot;dropdown-link-hover-color&quot;:&quot;#fff&quot;, &quot;dropdown-link-hover-bg&quot;:&quot;#6ea2d5&quot;, &quot;grid-columns&quot;:&quot;36&quot;, &quot;breadcrumb-color&quot;:&quot;#fff&quot;, &quot;breadcrumb-active-color&quot;: &quot;#fff&quot;, &quot;breadcrumb-bg&quot;:&quot;#6ea2d5&quot;,&quot;breadcrumb-separator&quot;:&quot;&quot;} " label="TPL_BOOTSTRAP4_BOOTSTRAP_VARIABLES" description="TPL_BOOTSTRAP4_BOOTSTRAP_VARIABLES_DESC" rows="10" cols="5" filter="raw"/>
-                <field name="1srVariables" type="textarea" default="{&quot;1sr-primary&quot;:&quot;#6ea2d5&quot;, &quot;1sr-highlight&quot;:&quot;#ff9900&quot;}" label="TPL_BOOTSTRAP4_TEMPLATE_VARIABLES" description="TPL_BOOTSTRAP4_TEMPLATE_VARIABLES_DESC" rows="10" cols="5" filter="raw"/>
+                <field name="bootstrapVariables" type="textarea" default="{&quot;grid-columns&quot;:12, &quot;breadcrumb-padding-y&quot;:&quot;.5rem&quot;}" label="TPL_BOOTSTRAP4_BOOTSTRAP_VARIABLES" description="TPL_BOOTSTRAP4_BOOTSTRAP_VARIABLES_DESC" rows="10" cols="5" filter="raw"/>
+                <field name="sassFiles" type="textarea" default="[&quot;1sr-bs4.scss&quot;]" label="TPL_BOOTSTRAP4_SASS_FILES" description="TPL_BOOTSTRAP4_SASS_FILES_DESC" rows="10" cols="5" filter="raw"/>
 
                 <field name="customLogo" type="media" directory="stories" label="TPL_BOOTSTRAP4_CUSTOM_LOGO" description="TPL_BOOTSTRAP4_CUSTOM_LOGO_DESC" />
 

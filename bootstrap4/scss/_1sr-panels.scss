@@ -1,0 +1,31 @@
+//
+// Panels
+// --------------------------------------------------
+
+#logo {
+  padding: ($grid-gutter-width / 2) 0;
+  img {
+    @include border-radius($border-radius);
+  }
+}
+
+.page-header {
+  padding-bottom: 0;
+  margin: 0;
+  border-bottom: 0;
+}
+
+.page-header > h1:first-child,
+.moduletable > h3:first-child {
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $white;
+  background-color: theme-color("primary");
+  margin: 0 0 ($grid-gutter-width / 2) 0;
+  padding: $breadcrumb-padding-y $breadcrumb-padding-x;
+  @include border-radius($border-radius);
+}
+
+#main {
+  min-height: 500px;
+}
