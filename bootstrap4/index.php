@@ -24,8 +24,9 @@ $sassFilesJson = $params->get('sassFiles');
 $fsrVars = $params->get('1srVariables');
 $customLogo = $params->get('customLogo');
 $showSiteName = $params->get('showSiteName');
-$analyticsAccount = $params->get('analyticsAccount');
-$mapsApiKey = $params->get('mapsApiKey');
+$googleAnalyticsAccount = $params->get('googleAnalyticsAccount');
+$googleMapsApiKey = $params->get('googleMapsApiKey');
+$googleAdClient = $params->get('googleAdClient');
 $showCookieDeclineButton = $params->get('showCookieDeclineButton');
 
 $bootstrapVars = json_decode($bootstrapVarJson, true);
@@ -109,20 +110,22 @@ if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right'))
                 <script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script>
         <![endif]-->
     </head>
-    <body>
+    <body onLoad="analytics();">
         <header class="navbar navbar-expand-sm navbar-static-top navbar-dark bg-primary yamm">
-        		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        			<span class="navbar-toggler-icon"></span>
-        		</button>
-            <?php if($showSiteName == "yes") : ?>
-                <a class="navbar-brand" href="<?php echo $this->baseurl; ?>/" >
-                    <?php echo $app->getCfg('sitename'); ?>
-                </a>
-		        <?php endif; ?>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <jdoc:include type="modules" name="navbar-1" style="none" />
-                <jdoc:include type="modules" name="navbar-2" style="none" />
-            </div>
+			<div class="container<?php echo ($fixedWidth == "yes") ? "" : "-fluid"; ?>">
+					<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+				<?php if($showSiteName == "yes") : ?>
+					<a class="navbar-brand" href="<?php echo $this->baseurl; ?>/" >
+						<?php echo $app->getCfg('sitename'); ?>
+					</a>
+					<?php endif; ?>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<jdoc:include type="modules" name="navbar-1" style="none" />
+					<jdoc:include type="modules" name="navbar-2" style="none" />
+				</div>
+			</div>
         </header>
         <div class="body">
             <div class="content">
@@ -211,18 +214,221 @@ if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right'))
                     </div>
                     <div class="col-sm-<?php echo floor(($gridColumns*1)/3); ?>">
                         <p class="text-sm-right">
+                            Template by <?php /* Dieser Link darf NICHT entfernt werden! This link may NOT be removed! */ ?><a href="http://www.1sr.de" target="_blank">1sr</a><?php /* Dieser Link darf NICHT entfernt werden! This link may NOT be removed! */ ?>
+                        </p>
+                        <?php if(false) : ?>
+                        <p class="text-sm-right">
                             <a href="#top" id="back-top">
                                 <i class="fa fa-arrow-up"></i> <?php echo JText::_('TPL_BOOTSTRAP4_BACKTOTOP'); ?>
                             </a>
                         </p>
+                      <?php endif; ?>
                     </div>
                 </div>
             </div>
         </footer>
+
+        <a href="#" class="scroll-to-top" title="<?php echo JText::_('TPL_BOOTSTRAP4_BACKTOTOP'); ?>">
+            <i class="fa fa-caret-square-o-up img-thumbnail"></i>
+        </a>
+
         <jdoc:include type="modules" name="debug" style="none" />
+
+        <?php if($googleAdClient != "") : ?>
+
+      	<script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" defer></script>
+
+      	<?php endif; ?>
+
+        <?php if($googleMapsApiKey != "") : ?>
+
+      	<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $googleMapsApiKey; ?>" defer></script>
+
+      	<?php endif; ?>
+        <script type="text/javascript">
+
+            jQuery(document).ready(function(){
+
+                <?php if($googleAdClient != "") : ?>
+
+                (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "<?php echo $googleAdClient; ?>",
+                enable_page_level_ads: true
+                });
+
+                <?php endif; ?>
+
+                // check to see if the window is top if not then display button
+                jQuery(window).scroll(function() {
+                    if (jQuery(this).scrollTop() > 500) {
+                        jQuery('.scroll-to-top').fadeIn();
+                    } else {
+                        jQuery('.scroll-to-top').fadeOut();
+                    }
+                });
+
+                // click event to scroll to top
+                jQuery('.scroll-to-top').click(function() {
+                    jQuery('html, body').animate({scrollTop : 0}, 1000);
+                    return false;
+                });
+            });
+
+            <?php if(false) : ?>
+                // http://css-tricks.com/snippets/jquery/smooth-scrolling/
+            <?php endif; ?>
+
+            // smooth scrolling
+      	    jQuery('a[href*="#"]:not([href="#"]):not(.no-smooth-scrolling)').click(function() {
+      	        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+      	            || location.hostname == this.hostname) {
+
+      	            var target = jQuery(this.hash);
+      	            target = target.length ? target : jQuery('[name=' + this.hash.slice(1) +']');
+      	               if (target.length) {
+      	                 jQuery('html,body').animate({
+      	                     scrollTop: target.offset().top
+      	                }, 1000);
+      	                return false;
+      	            }
+      	        }
+      	    });
+
+            // auto scroll
+      	    var autoScrollMarker = jQuery('#auto-scroll-marker');
+
+      	    if(autoScrollMarker.length
+      			  && !jQuery(location).attr('hash')) {
+
+      	        setTimeout(function() {
+                    jQuery('html,body').animate({
+                        scrollTop: (autoScrollMarker.offset().top - jQuery('.navbar').height())
+                    }, 1000);
+                }, 3000);
+
+      	    }
+
+            // wait availablity of cookieCuttr
+            function JS_wait() {
+          			if (typeof jQuery.cookie == 'undefined' ||
+          				typeof jQuery.cookieCuttr == 'undefined') {
+                    window.setTimeout(JS_wait, 100);
+          			}
+          			else
+          			{
+          				JS_ready();
+          			}
+        		}
+
+            function JS_ready() {
+
+          			// create cookie bar
+          			jQuery.cookieCuttr({
+            				cookieAnalytics: false,
+            				cookieDeclineButton: <?php echo ($showCookieDeclineButton == "yes") ? "true" : "false"; ?>,
+            				cookieResetButton: false,
+            				cookieAcceptButtonText: '<?php echo JText::_( 'COOKIE_ACCEPT_BUTTON_TEXT' ); ?>',
+            				cookieDeclineButtonText: '<?php echo JText::_( 'COOKIE_DECLINE_BUTTON_TEXT' ); ?>',
+            				cookieResetButtonText: '<?php echo JText::_( 'COOKIE_RESET_BUTTON_TEXT' ); ?>',
+            				cookieMessage: '<?php echo JText::_( 'COOKIE_MESSAGE' ); ?>'
+          			});
+
+          			if (jQuery.cookie('cc_cookie_decline') == "cc_cookie_decline") {
+            				// disable important links and call modal
+            				jQuery('[data-important-link]').click(function (e) {
+              					e.preventDefault();
+
+              					jQuery('#cookie-reset-modal').modal('show');
+            				});
+          			}
+
+          			jQuery('#cookie-reset-accept').click(function () {
+            				//close modal
+            				jQuery('#cookie-reset-modal').modal('hide');
+
+            				// accept cookies
+            				jQuery.cookie("cc_cookie_decline", null, {
+                        path: '/'
+            				});
+            				jQuery.cookie("cc_cookie_accept", "cc_cookie_accept", {
+              					expires: 365,
+              					path: '/'
+            				});
+
+            				// reload page to activate cookies
+            				location.reload();
+          			});
+            };
+
+            /* ================================== */
+            /* ANALYTICS                          */
+            /* ================================== */
+
+          	<?php if($googleAnalyticsAccount != "") : ?>
+
+          	if (getCookie('cc_cookie_decline') == "cc_cookie_decline") {
+
+          	} else {
+                var _gaq=_gaq||[];
+          		  _gaq.push(['_setAccount','<?php echo $googleAnalyticsAccount; ?>']);
+                _gaq.push(['_trackPageview']);
+            		(function(){
+              			var ga=document.createElement('script');
+              			ga.type='text/javascript';
+              			ga.async=true;
+              			ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';
+              			var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);}
+                )();
+          	}
+
+          	<?php endif; ?>
+
+            /* ================================== */
+          	/* functions                          */
+          	/* ================================== */
+
+          	jQuery(document).ready(JS_wait);
+
+          	// get cookie with plain JS
+          	function getCookie(cname) {
+
+            		var name = cname + "=";
+            		var ca = document.cookie.split(';');
+            		for(var i=0; i<ca.length; i++) {
+              			var c = ca[i];
+              			while (c.charAt(0)==' ') c = c.substring(1);
+              			if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+            		}
+            		return "";
+
+          	}
+
+          	// track analytics event
+          	function trackGAEvent(category, action, label, value) {
+            		"use strict";
+            		if (typeof (_gaq) !== "undefined") {
+            			   _gaq.push(['_trackEvent', category, action, label, value]);
+            		} else if (typeof (ga) !== "undefined") {
+            			   ga('send', 'event', category, action, label, value);
+            		}
+          	}
+
+            function analytics() {
+                var using_adblock;
+                if(typeof(window.__google_ad_urls)=="undefined") {
+                    using_adblock = "yes";
+                }
+                else {
+                    using_adblock = "no";
+                    _gaq.push(['_setCustomVar', 1, 'adblock', using_adblock, 3]);
+                    _gaq.push(['_trackPageview']);
+                }
+            }
+
+        </script>
 
         <?php if ($this->countModules('snippets')) : ?>
            <jdoc:include type="modules" name="snippets" />
-       <?php endif; ?>
+        <?php endif; ?>
     </body>
 </html>
