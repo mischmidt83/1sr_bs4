@@ -84,6 +84,7 @@ $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
 
 $1sr-primary:   #142849 !default;
+$1sr-secondary: #142849 !default;
 $1sr-highlight: #ff9900 !default;
 
 $colors: (
@@ -101,6 +102,7 @@ $colors: (
   gray: $gray-600,
   gray-dark: $gray-800,
   1sr-primary: $1sr-primary,
+  1sr-secondary: $1sr-secondary,
   1sr-highlight: $1sr-highlight
 ) !default;
 
@@ -114,6 +116,7 @@ $theme-colors: (
   light: $gray-100,
   dark: $gray-800,
   1sr-primary: $1sr-primary,
+  1sr-secondary: $1sr-secondary,
   1sr-highlight: $1sr-highlight
 ) !default;
 
