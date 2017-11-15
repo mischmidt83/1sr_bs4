@@ -56,6 +56,8 @@ if ($task == "edit" || $layout == "form") {
 JHtml::_('jquery.framework');
 $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js');
 $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/popper.min.js');
+$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/jquery-cookie/jquery.cookie.js');
+$doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/jquery-cookieCuttr/jquery.cookiecuttr.js');
 $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/bootstrap.min.js');
 
 // Add Stylesheets
@@ -245,7 +247,7 @@ if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right'))
       	<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $googleMapsApiKey; ?>" defer></script>
 
       	<?php endif; ?>
-        <script type="text/javascript">
+        <script>
 
             jQuery(document).ready(function(){
 
@@ -327,10 +329,10 @@ if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right'))
             				cookieAnalytics: false,
             				cookieDeclineButton: <?php echo ($showCookieDeclineButton == "yes") ? "true" : "false"; ?>,
             				cookieResetButton: false,
-            				cookieAcceptButtonText: '<?php echo JText::_( 'COOKIE_ACCEPT_BUTTON_TEXT' ); ?>',
-            				cookieDeclineButtonText: '<?php echo JText::_( 'COOKIE_DECLINE_BUTTON_TEXT' ); ?>',
-            				cookieResetButtonText: '<?php echo JText::_( 'COOKIE_RESET_BUTTON_TEXT' ); ?>',
-            				cookieMessage: '<?php echo JText::_( 'COOKIE_MESSAGE' ); ?>'
+            				cookieAcceptButtonText: '<?php echo JText::_( 'TPL_BOOTSTRAP4_COOKIE_ACCEPT_BUTTON_TEXT' ); ?>',
+            				cookieDeclineButtonText: '<?php echo JText::_( 'TPL_BOOTSTRAP4_COOKIE_DECLINE_BUTTON_TEXT' ); ?>',
+            				cookieResetButtonText: '<?php echo JText::_( 'TPL_BOOTSTRAP4_COOKIE_RESET_BUTTON_TEXT' ); ?>',
+            				cookieMessage: '<?php echo JText::_( 'TPL_BOOTSTRAP4_COOKIE_MESSAGE' ); ?>'
           			});
 
           			if (jQuery.cookie('cc_cookie_decline') == "cc_cookie_decline") {
@@ -424,6 +426,8 @@ if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right'))
                     _gaq.push(['_trackPageview']);
                 }
             }
+
+            //# sourceURL=inline-footer.js
 
         </script>
 

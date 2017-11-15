@@ -1,4 +1,4 @@
-  <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="3.1" type="template" client="site" method="upgrade">
     <!--name>bootstrap4</name>
@@ -13,7 +13,7 @@
   	<copyright>Copyright © 2017 1sr.de, Inc. All rights reserved.</copyright>
   	<authorEmail>info@1sr.de</authorEmail>
   	<authorUrl>http://www.1sr.de</authorUrl>
-  	<version>1.5.6</version>
+  	<version>1.5.7</version>
     <description>TPL_BOOTSTRAP4_XML_DESCRIPTION</description>
     <files>
         <filename>component.php</filename>
