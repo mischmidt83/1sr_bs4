@@ -13,7 +13,7 @@
   	<copyright>Copyright © 2017 1sr.de, Inc. All rights reserved.</copyright>
   	<authorEmail>info@1sr.de</authorEmail>
   	<authorUrl>http://www.1sr.de</authorUrl>
-  	<version>1.5.7</version>
+  	<version>1.5.8</version>
     <description>TPL_BOOTSTRAP4_XML_DESCRIPTION</description>
     <files>
         <filename>component.php</filename>

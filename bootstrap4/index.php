@@ -302,12 +302,14 @@ if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right'))
       	    if(autoScrollMarker.length
       			  && !jQuery(location).attr('hash')) {
 
-      	        setTimeout(function() {
-                    jQuery('html,body').animate({
-                        scrollTop: (autoScrollMarker.offset().top - jQuery('.navbar').height())
-                    }, 1000);
+                setTimeout(function() {
+                    // auto scroll only if you have not already scroll over the auto-scroll-marker
+                    if($(document).scrollTop() < autoScrollMarker.offset().top) {
+                        jQuery('html,body').animate({
+                            scrollTop: (autoScrollMarker.offset().top - jQuery('.navbar').height())
+                        }, 1000);
+                    }
                 }, 3000);
-
       	    }
 
             // wait availablity of cookieCuttr
