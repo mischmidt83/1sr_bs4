@@ -375,7 +375,8 @@ if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right'))
           	} else {
                 var _gaq=_gaq||[];
           		  _gaq.push(['_setAccount','<?php echo $googleAnalyticsAccount; ?>']);
-                _gaq.push(['_trackPageview']);
+				  _gaq.push (['_gat._anonymizeIp']);
+				  _gaq.push(['_trackPageview']);
             		(function(){
               			var ga=document.createElement('script');
               			ga.type='text/javascript';
@@ -425,6 +426,7 @@ if ($this->countModules('sidebar-left') && $this->countModules('sidebar-right'))
                 else {
                     using_adblock = "no";
                     _gaq.push(['_setCustomVar', 1, 'adblock', using_adblock, 3]);
+					_gaq.push (['_gat._anonymizeIp']);
                     _gaq.push(['_trackPageview']);
                 }
             }
